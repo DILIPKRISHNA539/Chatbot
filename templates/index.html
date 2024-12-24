@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat with Bot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            text-align: center;
+        }
+        .chat-box {
+            margin-top: 20px;
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
+        }
+        .user-message, .bot-reply {
+            margin: 10px 0;
+        }
+        .bot-reply {
+            color: green;
+        }
+        .user-message {
+            color: blue;
+        }
+        input[type="text"] {
+            width: calc(100% - 100px);
+            padding: 10px;
+            margin-right: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Chat with the Bot</h1>
+        <form action="/chat" method="POST">
+            <input type="text" name="message" placeholder="Type your message..." value="{{ user_message or '' }}" required>
+            <button type="submit">Send</button>
+        </form>
+
+        {% if bot_reply %}
+        <div class="chat-box">
+            <div class="user-message">
+                <strong>You:</strong> {{ user_message }}
+            </div>
+            <div class="bot-reply">
+                <strong>Bot:</strong> {{ bot_reply }}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
