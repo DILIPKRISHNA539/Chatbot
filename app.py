@@ -18,7 +18,7 @@ def query_gradio(message):
     except Exception as e:
         return {"error": str(e)}
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/chat', methods=['GET', 'POST'])
 def chat():
     user_message = ""
     bot_reply = ""
